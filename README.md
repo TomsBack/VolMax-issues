@@ -18,7 +18,7 @@ VolMax boosts any tab's volume up to 1000% with a built-in 6-band equalizer, per
 
 ## Install
 
-- **Chrome / Edge:** [Chrome Web Store](https://chromewebstore.google.com/detail/volmax/REPLACE_CHROME_ID)
+- **Chrome / Edge:** [Chrome Web Store](https://chromewebstore.google.com/detail/volmax/ggofmjdnmnmkbjdkgbjdlipebddhmngf)
 - **Firefox:** Coming soon
 
 ## Report a bug

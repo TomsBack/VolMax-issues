@@ -1,0 +1,71 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Edge
+        - Firefox
+        - Brave
+        - Opera
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser version
+      placeholder: e.g. 124.0.6367.91
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: VolMax version
+      description: Shown in the popup header (e.g. v1.0.0)
+      placeholder: v1.0.0
+
+  - type: input
+    id: website
+    attributes:
+      label: Website where the issue occurs
+      placeholder: e.g. youtube.com, spotify.com
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly.
+      placeholder: Tell us what went wrong...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: What should have happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to trigger the bug.
+      placeholder: |
+        1. Open YouTube
+        2. Set volume to 300%
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, console errors, or anything else that might help.

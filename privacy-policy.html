@@ -23,30 +23,34 @@
 <div class="container">
 
 <h1>VolMax — Privacy Policy</h1>
-<p class="subtitle">Last updated: March 28, 2026</p>
+<p class="subtitle">Last updated: October 25, 2026</p>
 
 <h2>Summary</h2>
 <p>VolMax does not collect, store, transmit, or share any personal data. Everything stays on your device.</p>
 
 <h2>What data is stored</h2>
-<p>VolMax uses your browser's local storage (<code>chrome.storage.local</code>) to remember:</p>
+<p>VolMax uses your browser's extension storage to remember:</p>
 <ul>
-  <li>Per-tab audio settings (volume, EQ, toggles) — deleted when the tab closes</li>
-  <li>Saved profiles (name + settings) — persists until you delete them</li>
-  <li>Support banner dismiss flag</li>
+  <li>Per-tab audio settings (volume, EQ, toggles) in session storage — deleted when the tab or the browser session closes</li>
+  <li>Saved profiles (name + settings) in local storage — kept until you delete them</li>
+  <li>Pinned sites (site name + settings) in local storage — kept until you unpin them</li>
+  <li>Preferences in local storage: volume step, tab icon dot on/off, compact mode, and the support banner dismiss flag</li>
+  <li>Prompt timing in local storage: the install date, how often the popup was opened, and which prompts you closed, so the rating card and the "What's new" line show at the right time</li>
 </ul>
-<p>This data never leaves your browser. It is not sent to any server, analytics service, or third party.</p>
+<p>This data never leaves your browser. It is not sent to any server, analytics service, or third party. Profiles leave extension storage only when you export them to a JSON file yourself.</p>
 
 <h2>Permissions explained</h2>
 <ul>
-  <li><strong>activeTab / tabs</strong> — needed to identify the current tab and apply per-tab volume settings</li>
+  <li><strong>activeTab</strong> — lets VolMax work on the current tab when you open its popup, even if site access is limited</li>
   <li><strong>scripting</strong> — needed to inject the audio processing script into pages after an extension update</li>
   <li><strong>storage</strong> — needed to save your volume settings and profiles locally</li>
   <li><strong>host_permissions (&lt;all_urls&gt;)</strong> — needed so the content script can capture and boost audio on any website</li>
 </ul>
 
 <h2>Network access</h2>
-<p>VolMax makes zero network requests. It does not contain analytics, telemetry, tracking pixels, or ads. There is no server component.</p>
+<p>VolMax makes no network requests of its own. It does not contain analytics, telemetry, tracking pixels, or ads. There is no server component. To draw the tab icon dot, the browser may load the page's own favicon again, anonymously. You can turn the dot off. The Rate and Support buttons open external pages only when you click them.</p>
+<p>When you uninstall VolMax, your browser opens a page on GitHub Pages. Its address carries only the VolMax version and your browser name. It carries nothing else, and the page sets no cookies and loads nothing from other sites.</p>
+<p>The feedback menu links (report a bug, suggest a feature, email the developer) and the help page open only when you click them. They send nothing by themselves. Any details they prefill, such as the VolMax version, browser version and site name, appear in the form or email for you to read, change or delete before you send it.</p>
 
 <h2>Third-party services</h2>
 <p>None. VolMax is entirely self-contained.</p>

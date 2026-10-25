@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>VolMax was removed</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg: #0e0e10; --surface: #18181c; --border: #2a2a30; --accent: #00e5a0; --text: #f0f0f2; --muted: #8b8b98; --on-accent: #000000; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f0f0f4; --surface: #ffffff; --border: #c0c0cc; --accent: #007a5a; --text: #18181c; --muted: #6a6a78; --on-accent: #ffffff; }
+  }
+  body { background: var(--bg); color: var(--text); font: 15px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif; padding: 40px 20px; }
+  main { max-width: 560px; margin: 0 auto; }
+  .logo { font-size: 18px; font-weight: 700; margin-bottom: 24px; }
+  .logo span { color: var(--accent); }
+  h1 { font-size: 26px; line-height: 1.25; margin-bottom: 8px; }
+  p { color: var(--muted); margin-bottom: 18px; }
+  .reasons { display: grid; gap: 8px; margin-bottom: 22px; }
+  .reason { display: block; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); text-decoration: none; }
+  .reason:hover { border-color: var(--accent); color: var(--accent); }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .more { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .more a { text-decoration: none; }
+  .more a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">Vol<span>Max</span></div>
+  <h1>VolMax was removed. What went wrong?</h1>
+  <p>Pick the closest reason. It opens an email to the developer, and you see the whole message before you send it.</p>
+  <div class="reasons" id="reasons">
+    <a class="reason" data-reason="It didn't work on a site" href="#">It didn't work on a site</a>
+    <a class="reason" data-reason="Sound problems" href="#">Sound problems</a>
+    <a class="reason" data-reason="Hard to use" href="#">Hard to use</a>
+    <a class="reason" data-reason="I don't need it anymore" href="#">I don't need it anymore</a>
+    <a class="reason" data-reason="Something else" href="#">Something else</a>
+  </div>
+  <div class="more">
+    <a id="bugLink" href="https://github.com/TomsBack/VolMax-issues/issues/new?template=bug_report.yml" rel="noopener">Report a bug on GitHub</a>
+    <a href="https://addons.mozilla.org/firefox/addon/volmax-volume-booster-eq/" rel="noopener">Reinstall for Firefox</a>
+    <a href="https://chromewebstore.google.com/search/VolMax" rel="noopener">Reinstall for Chrome and Edge</a>
+  </div>
+</main>
+<script>
+  (function () {
+    var EMAIL = 'oplpet95@gmail.com';
+    var BROWSERS = ['Chrome', 'Edge', 'Firefox', 'Brave', 'Opera'];
+    var params = new URLSearchParams(location.search);
+    var version = /^[0-9][0-9A-Za-z.\-]{0,19}$/.test(params.get('v') || '') ? params.get('v') : '';
+    var browser = BROWSERS.indexOf(params.get('b')) >= 0 ? params.get('b') : '';
+
+    var bug = new URL(document.getElementById('bugLink').href);
+    if (version) bug.searchParams.set('extension-version', version);
+    if (browser) bug.searchParams.set('browser', browser);
+    document.getElementById('bugLink').href = bug.href;
+
+    document.getElementById('reasons').addEventListener('click', function (e) {
+      var link = e.target.closest('.reason');
+      if (!link) return;
+      e.preventDefault();
+      var body = 'VolMax version: ' + (version || 'unknown') + '\r\nBrowser: ' + (browser || 'unknown') + '\r\n\r\n';
+      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('VolMax removed: ' + link.dataset.reason) + '&body=' + encodeURIComponent(body);
+    });
+  })();
+</script>
+</body>
+</html>
